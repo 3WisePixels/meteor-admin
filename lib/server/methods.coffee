@@ -4,7 +4,6 @@ Meteor.methods
 		if Roles.userIsInRole this.userId, ['admin']
 			this.unblock()
 			result = adminCollectionObject(collection).insert doc
-				
 			return result
 
 	adminUpdateDoc: (modifier,collection,_id)->

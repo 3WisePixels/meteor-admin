@@ -44,6 +44,8 @@ Template.AdminDashboardView.rendered = ->
 	length.find('select').on 'change', ->
 		table.page.len(parseInt @value).draw()
 
+	$( ".dataTables_filter" ).after( "<p>Test</p>" );
+
 Template.AdminDashboardView.helpers
 	hasDocuments: ->
 		AdminCollectionsCount.findOne({collection: Session.get 'admin_collection_name'})?.count > 0

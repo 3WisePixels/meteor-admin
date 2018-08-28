@@ -2,6 +2,14 @@
 
 adminTablesDom = '<"box"<"box-header"<"box-toolbar"<"pull-left"<lf>><"pull-right"p>>><"box-body"t>><r>'
 
+adminCheckbox = {
+	data: '_id'
+	title: ''
+	createdCell: (node, cellData, rowData) ->
+		$(node).html(Blaze.toHTMLWithData Template.adminCheckbox, {_id: cellData})
+	width: '10px'
+	orderable: false
+}
 adminEditButton = {
 	data: '_id'
 	title: 'Edit'
@@ -58,6 +66,8 @@ adminCreateTables = (collections) ->
 		if collection.showDelColumn
 			columns.push(adminDelButton)
 
+		columns.push(adminCheckbox)
+
 		AdminTables[name] = new Tabular.Table
 			name: name
 			collection: adminCollectionObject(name)
@@ -91,6 +101,7 @@ adminCreateRouteViewOptions = (collection, collectionName) ->
 			Session.set 'admin_title', collectionName
 			Session.set 'admin_subtitle', 'View'
 			Session.set 'admin_collection_name', collectionName
+			Session.set 'checked_items', []
 			collection.routes?.view?.onAfterAction
 	_.defaults options, collection.routes?.view
 
