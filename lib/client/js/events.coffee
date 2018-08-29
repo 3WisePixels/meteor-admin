@@ -7,6 +7,7 @@ Template.AdminLayout.events
 		else
 			Session.set 'admin_id', parseID(_id)
 			Session.set 'admin_doc', adminCollectionObject(Session.get('admin_collection_name')).findOne(parseID(_id))
+			
 	'click .check': (e,t) ->
 		_id = $(e.target).attr('doc')
 		checked_items = Session.get 'checked_items'
@@ -21,6 +22,7 @@ Template.AdminLayout.events
 		console.log Session.get 'checked_items'
 	'click th': (e,t) ->
 		Session.set 'checked_items', []
+
 Template.AdminDeleteModal.events
 	'click #confirm-delete': () ->
 		collection = Session.get 'admin_collection_name'

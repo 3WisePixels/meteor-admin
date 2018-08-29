@@ -14,7 +14,7 @@ Template.AdminDashboardViewWrapper.destroyed = ->
 	Blaze.remove @data.view
 
 Template.AdminDashboardView.rendered = ->
-	table = @$('.dataTable').DataTable();
+	table = @$('.dataTable').DataTable()
 	filter = @$('.dataTables_filter')
 	length = @$('.dataTables_length')
 
@@ -30,7 +30,7 @@ Template.AdminDashboardView.rendered = ->
 	'
 
 	length.html '
-		<select class="form-control input-sm">
+		<select class="form-control ">
 			<option value="10">10</option>
 			<option value="25">25</option>
 			<option value="50">50</option>
@@ -44,7 +44,17 @@ Template.AdminDashboardView.rendered = ->
 	length.find('select').on 'change', ->
 		table.page.len(parseInt @value).draw()
 
-	$( ".dataTables_filter" ).after( "<p>Test</p>" );
+	$( ".dataTables_filter" ).after( "	
+		<select class='form-control' id='status_value'>
+			<option value=''>Change Order Status</option>
+			<option value='Complete'>Complete</option>
+			<option value='Delivered'>Delivered</option>
+			<option value='Pending'>Pending</option>
+			<option value='Preparing'>Preparing</option>
+			<option value='En-Route'>En-Route</option>
+			<option value='Picked up'>Picked up</option>
+		</select>
+		<button id='apply_filter'>Apply</button>" )
 
 Template.AdminDashboardView.helpers
 	hasDocuments: ->

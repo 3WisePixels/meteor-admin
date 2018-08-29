@@ -54,6 +54,7 @@ Package.on_use(function(api){
     'lib/client/js/helpers.coffee',
     'lib/client/js/templates.coffee',
     'lib/client/js/events.coffee',
+    'lib/client/js/events-es6.js',
     'lib/client/js/slim_scroll.js',
     'lib/client/js/autoForm.coffee'
     ], 'client');

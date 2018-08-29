@@ -7,7 +7,7 @@ adminCheckbox = {
 	title: ''
 	createdCell: (node, cellData, rowData) ->
 		$(node).html(Blaze.toHTMLWithData Template.adminCheckbox, {_id: cellData})
-	width: '10px'
+	width: '15px'
 	orderable: false
 }
 adminEditButton = {
@@ -15,7 +15,7 @@ adminEditButton = {
 	title: 'Edit'
 	createdCell: (node, cellData, rowData) ->
 		$(node).html(Blaze.toHTMLWithData Template.adminEditBtn, {_id: cellData})
-	width: '40px'
+	width: '30px'
 	orderable: false
 }
 adminDelButton = {
@@ -23,7 +23,7 @@ adminDelButton = {
 	title: 'Delete'
 	createdCell: (node, cellData, rowData) ->
 		$(node).html(Blaze.toHTMLWithData Template.adminDeleteBtn, {_id: cellData})
-	width: '40px'
+	width: '30px'
 	orderable: false
 }
 
@@ -65,8 +65,8 @@ adminCreateTables = (collections) ->
 			columns.push(adminEditButton)
 		if collection.showDelColumn
 			columns.push(adminDelButton)
-
-		columns.push(adminCheckbox)
+		if collection.showCheckbox
+			columns.push(adminCheckbox)
 
 		AdminTables[name] = new Tabular.Table
 			name: name
